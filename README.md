@@ -1,24 +1,62 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column      |  Type     |   Options     |
+| ----------- | --------- | ------------- |
+| nickname    | string    | null: false   |
+| email       | string    | null: false   |
+| password    | string    | null: false   |
+| first_name  | string    |  null: false  |
+| last_name   | string    | null: false   |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :purchases
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column              |  Type     |   Options     |
+| ------------------- | --------- | ------------- |
+| image               |           | ActiveStorage |
+| product_name        | string    | null: false   |
+| product_description | text      | null: false   |
+| price               | string    | null: false   |
+| category            |           |  ActiveHash   |
+| product status      |           |  ActiveHash   |
+| shipping area       |           |  ActiveHash   |
+| shipping days       |           |  ActiveHash   |
+| shipping charges    |           |  ActiveHash   |
 
-* Database creation
+### Association
 
-* Database initialization
+- has_one    :purchase
+- belongs_to :user
 
-* How to run the test suite
+## purchase
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column              |  Type    |   Options     |
+| ------------------- | -------- | ------------- |
+| card information    | string   | null: false   |
+| expiration date     | string   | null: false   |
+| security code       | string   | null: false   |
 
-* Deployment instructions
+### Association
 
-* ...
+- has_one     :shipping address
+- belongs_to  :user
+- belongs_to  :item
+
+## shipping address
+
+| Column              |  Type     |   Options     |
+| ------------------- | --------- | ------------- |
+| postal code         | string    | null: false   |
+| prefectures         |           | ActiveHash    |
+| municipalities      | string    | null: false   |
+| address             | string    | null: false   |
+| building name       | string    |               |
+| phone number        | string    | null: false   |
+
+### Association
+
+- belongs_to :purchase
