@@ -1,12 +1,12 @@
 ## users テーブル
 
-| Column      |  Type     |   Options     |
-| ----------- | --------- | ------------- |
-| nickname    | string    | null: false   |
-| email       | string    | null: false   |
-| password    | string    | null: false   |
-| first_name  | string    |  null: false  |
-| last_name   | string    | null: false   |
+| Column             |  Type     |   Options     |
+| ------------------ | --------- | ------------- |
+| nickname           | string    | null: false   |
+| email              | string    | null: false   |
+| encrypted_password | string    | null: false   |
+| first_name         | string    | null: false   |
+| last_name          | string    | null: false   |
 
 ### Association
 
@@ -17,15 +17,14 @@
 
 | Column              |  Type     |   Options     |
 | ------------------- | --------- | ------------- |
-| image               |           | ActiveStorage |
 | product_name        | string    | null: false   |
 | product_description | text      | null: false   |
-| price               | string    | null: false   |
-| category            |           |  ActiveHash   |
-| product status      |           |  ActiveHash   |
-| shipping area       |           |  ActiveHash   |
-| shipping days       |           |  ActiveHash   |
-| shipping charges    |           |  ActiveHash   |
+| price               | integer   | null: false   |
+| category_id         | integer   | null: false   |
+| product_status_id   | integer   | null: false   |
+| shipping_area_id    | integer   | null: false   |
+| shipping_days_id    | integer   | null: false   |
+| shipping_charges_id | integer   | null: false   |
 
 ### Association
 
@@ -36,26 +35,25 @@
 
 | Column              |  Type    |   Options     |
 | ------------------- | -------- | ------------- |
-| card information    | string   | null: false   |
-| expiration date     | string   | null: false   |
-| security code       | string   | null: false   |
+| user_id             | string   | null: false   |
+| item_id             | string   | null: false   |
 
 ### Association
 
-- has_one     :shipping address
+- has_one     :shipping_address
 - belongs_to  :user
 - belongs_to  :item
 
-## shipping address
+## shipping＿address
 
 | Column              |  Type     |   Options     |
 | ------------------- | --------- | ------------- |
-| postal code         | string    | null: false   |
-| prefectures         |           | ActiveHash    |
+| postal_code         | string    | null: false   |
+| prefectures         | integer   | null: false   |
 | municipalities      | string    | null: false   |
 | address             | string    | null: false   |
-| building name       | string    |               |
-| phone number        | string    | null: false   |
+| building_name       | string    |               |
+| phone_number        | string    | null: false   |
 
 ### Association
 
