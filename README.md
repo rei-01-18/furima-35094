@@ -3,15 +3,19 @@
 | Column             |  Type     |   Options     |
 | ------------------ | --------- | ------------- |
 | nickname           | string    | null: false   |
-| email              | string    | null: false   |
+| email              | string    | unique: true  |
 | encrypted_password | string    | null: false   |
 | first_name         | string    | null: false   |
 | last_name          | string    | null: false   |
+| first_name_furigana| string    | null: false   |
+| last_name_furigana | string    | null: false   |
+| birth_day          | date      | null: false   |
 
 ### Association
 
 - has_many :items
 - has_many :purchases
+- has_one  :shipping_address
 
 ## items テーブル
 
@@ -22,7 +26,7 @@
 | price               | integer   | null: false   |
 | category_id         | integer   | null: false   |
 | product_status_id   | integer   | null: false   |
-| shipping_area_id    | integer   | null: false   |
+| prefectures_id      | integer   | null: false   |
 | shipping_days_id    | integer   | null: false   |
 | shipping_charges_id | integer   | null: false   |
 
@@ -33,10 +37,10 @@
 
 ## purchase
 
-| Column              |  Type    |   Options     |
-| ------------------- | -------- | ------------- |
-| user_id             | string   | null: false   |
-| item_id             | string   | null: false   |
+| Column              |  Type      |   Options     |
+| ------------------- | ---------- | ------------- |
+| user                | references | null: false   |
+| item                | references | null: false   |
 
 ### Association
 
@@ -49,7 +53,7 @@
 | Column              |  Type     |   Options     |
 | ------------------- | --------- | ------------- |
 | postal_code         | string    | null: false   |
-| prefectures         | integer   | null: false   |
+| prefectures_id      | integer   | null: false   |
 | municipalities      | string    | null: false   |
 | address             | string    | null: false   |
 | building_name       | string    |               |
@@ -58,3 +62,4 @@
 ### Association
 
 - belongs_to :purchase
+- belongs_to :user
