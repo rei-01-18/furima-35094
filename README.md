@@ -15,7 +15,6 @@
 
 - has_many :items
 - has_many :purchases
-- has_one  :shipping_address
 
 ## items テーブル
 
@@ -37,10 +36,10 @@
 
 ## purchase
 
-| Column              |  Type      |   Options     |
-| ------------------- | ---------- | ------------- |
-| user                | references | null: false   |
-| item                | references | null: false   |
+| Column              |  Type      |   Options                     |
+| ------------------- | ---------- | ----------------------------- |
+| user                | references | null: false, foreign_key:true |
+| item                | references | null: false, foreign_key:true |
 
 ### Association
 
@@ -62,4 +61,3 @@
 ### Association
 
 - belongs_to :purchase
-- belongs_to :user
