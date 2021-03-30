@@ -24,7 +24,7 @@
 | product_description | text      | null: false                   |
 | price               | integer   | null: false                   |
 | category_id         | integer   | null: false                   |
-| product_statu_id    | integer   | null: false                   |
+| product_status_id    | integer   | null: false                   |
 | prefecture_id       | integer   | null: false                   |
 | shipping_day_id     | integer   | null: false                   |
 | shipping_charge_id  | integer   | null: false                   |
@@ -35,7 +35,7 @@
 - has_one    :purchase
 - belongs_to :user 
 
-## purchase
+## purchases
 
 | Column              |  Type      |   Options                     |
 | ------------------- | ---------- | ----------------------------- |
@@ -48,13 +48,13 @@
 - belongs_to  :user
 - belongs_to  :item
 
-## shipping＿address
+## shipping＿addresses
 
 | Column              |  Type     |   Options                   |
 | ------------------- | --------- | --------------------------- |
 | postal_code         | string    | null: false                 |
 | prefecture_id       | integer   | null: false                 |
-| municipalities      | string    | null: false                 |
+| municipality      | string    | null: false                 |
 | address             | string    | null: false                 |
 | building_name       | string    |                             |
 | phone_number        | string    | null: false                 |
