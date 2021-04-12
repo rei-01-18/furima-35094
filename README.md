@@ -44,11 +44,11 @@
 
 ### Association
 
-- has_one     :shipping_address
+- has_one     :address
 - belongs_to  :user
 - belongs_to  :item
 
-## shipping＿addresses
+## addresses
 
 | Column              |  Type     |   Options                   |
 | ------------------- | --------- | --------------------------- |
