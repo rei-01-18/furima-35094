@@ -1,6 +1,9 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :sold_out_item, only: [:index]
+  before_action :ensure_correct_user, only: [:index, :create]
+
  
 
   def index
@@ -39,6 +42,13 @@ class PurchasesController < ApplicationController
 
   def sold_out_item
     if @item.purchase.present?
+      redirect_to root_path
+    end
+  end
+
+
+  def ensure_correct_user
+    if @item.user == current_user
       redirect_to root_path
     end
   end
