@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :sold_out_item, only: [:index]
-  before_action :ensure_correct_user, only: [:index, :create]
+  before_action :ensure_correct_user
 
  
 
